@@ -1,5 +1,5 @@
-#iChannel0 "./images/tex.jpg"
-#iChannel1 "./images/tex.jpg"
+#iChannel0 "../images/tex.jpg"
+#iChannel1 "../images/tex.jpg"
 
 void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
     float switcher = step(0., -sin(1.2*cos(iTime)));

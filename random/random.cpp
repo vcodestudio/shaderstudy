@@ -1,5 +1,5 @@
 
-#iChannel0 "./images/tex.jpg"
+#iChannel0 "../images/tex.jpg"
 
 float random(vec2 pos) {
     return fract(sin(dot(pos,vec2(24.342,34.2342)))*12313.321);

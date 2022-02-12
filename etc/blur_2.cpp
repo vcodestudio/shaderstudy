@@ -1,4 +1,4 @@
-#iChannel0 "./images/tex.jpg"
+#iChannel0 "../images/tex.jpg"
 
 float rand(vec2 pos) {
     return fract(sin(dot(pos,vec2(24.34243,35.43242)))*(12421.212 + iTime));
