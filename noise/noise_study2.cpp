@@ -47,7 +47,7 @@ void mainImage(out vec4 fragColor, in vec2 coord) {
 	diff *= diff;
 
 	// float circle = length(coord.xy - .5*iResolution.xy*.2*(.5 - noiseInterpolation(uv*10.)) - iMouse.xy) - 100.;
-	float circle = length(coord.xy - .5*iResolution.xy - vec2(0.,150.*noiseInterpolation(3.*(-.5 + 1.*vec2(iTime,-iTime))))) - 100.;
+	float circle = length(coord.xy - .5*iResolution.xy - vec2(0.,150.*noiseInterpolation(3.*(-.5 + 1.*vec2(iTime,-iTime))))) - 10.;
 	circle = 1. - circle;
 	
 	diff = circle;
