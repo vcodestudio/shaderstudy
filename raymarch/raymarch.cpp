@@ -3,7 +3,7 @@
 #define MAX_DIST 200.
 #define SURF_D .01
 #define PARTICLES 30
-#iChannel0 "./images/tex1.jpg"
+#iChannel0 "../images/tex1.jpg"
 
 float Random(vec2 p) {
     return fract(sin(dot(p,vec2(23.242,34.43242)))*13240.32);

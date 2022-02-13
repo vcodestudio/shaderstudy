@@ -1,4 +1,4 @@
-#iChannel0 "./images/tex.jpg"
+#iChannel0 "../images/tex.jpg"
 
 float random2(vec2 st){
     st = vec2( dot(st,vec2(127.1,311.7)),
