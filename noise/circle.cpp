@@ -1,5 +1,3 @@
-#iChannel0 "../images/tex.jpg"
-
 float random2(vec2 st){
     st = vec2( dot(st,vec2(127.1,311.7)),
               dot(st,vec2(269.5,183.3)) );
@@ -52,8 +50,6 @@ void mainImage(out vec4 c, in vec2 coord) {
     vec3 cam = vec3(0.5,0.5,.5);
     vec3 o_n = vec3(st,n);
     vec3 normal = normalize(cam - o_n);
-
-    vec4 tex = texture(iChannel0,st*.9 + .1*normal.xy);
 
     c = vec4(vec3(n), 1.0);
 }
