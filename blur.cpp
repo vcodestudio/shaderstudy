@@ -47,7 +47,7 @@ void mainImage(out vec4 fragColor, in vec2 coord) {
     circle = smoothstep(.1,1.,circle);
     float rr = .1;
     vec2 uv2 = random2(st);
-    float no = noise(st*10. + vec2(-iMouse.xy/iResolution.xy));
+    float no = noise(st*10. + vec2(-1.,0.) * iTime);
     no = no*1. + .0;
     no = max(0.,no);
     uv2 = mix(st,uv2,.5*min(1. - circle,rr * no));
