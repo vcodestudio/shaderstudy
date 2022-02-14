@@ -1,7 +1,13 @@
 #iChannel0 "../images/tex.jpg"
 
+float random(float x) {
+    return fract(sin(x)*1231231.2131);
+}
+
 vec3 noise(vec2 pos,float divide) {
     pos *= divide;
+    // float xi = floor(pos.x);
+    // pos.y += .3*random(xi) * pos.x;
     vec2 i = floor(pos);
     vec2 f = fract(pos);
 
@@ -34,11 +40,18 @@ vec3 noise(vec2 pos,float divide) {
 void mainImage(out vec4 fragColor, in vec2 coord) {
     
     vec2 uv = coord.xy/iResolution.xy;
-    float divide = 20.;
-    vec3 ac = noise(uv,divide);
-    vec3 ad = noise(uv + vec2(.05,.0),divide);
+    float divide = 30.;
+    vec2 res = 10./iResolution.xy;
+    vec3 origin = texture(iChannel0,uv).rgb;
+    vec3 aa = noise(uv + vec2(.0,-res.y),divide);
+    vec3 ab = noise(uv + vec2(res.x,.0),divide);
+    vec3 ac = noise(uv + vec2(-res.x,.0),divide);
+    vec3 ad = noise(uv + vec2(.0,res.y),divide);
 
-    vec3 color = mix(ac,ad,.5);
+    vec3 color1 = mix(aa,ab,.5);
+    vec3 color2 = mix(ac,ad,.5);
+    vec3 color3 = mix(color1,color2,.5);
+    vec3 color = mix(color3,origin,.2);
 
-    fragColor = vec4(color,1.);
+    fragColor = vec4(color3,1.);
 }
