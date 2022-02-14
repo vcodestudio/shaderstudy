@@ -46,11 +46,11 @@ void mainImage(out vec4 fragColor, in vec2 coord) {
 	diff = smoothstep(0.,1.,diff);
 	diff *= diff;
 
-	float circle = length(coord.xy - iMouse.xy) - 45.;
+	// float circle = length(coord.xy - .5*iResolution.xy*.2*(.5 - noiseInterpolation(uv*10.)) - iMouse.xy) - 100.;
+	float circle = length(coord.xy - .5*iResolution.xy - vec2(0.,150.*noiseInterpolation(3.*(-.5 + 1.*vec2(iTime,-iTime))))) - 10.;
 	circle = 1. - circle;
 	
-	// diff += circle;
-	diff = clamp(diff,0.,1.);
+	diff = circle;
 
     fragColor = vec4(vec3(diff),1.);
 }
