@@ -51,6 +51,5 @@ void mainImage(out vec4 fragColor, in vec2 coord) {
 	
 	// diff += circle;
 	diff = clamp(diff,0.,1.);
-
     fragColor = vec4(vec3(diff),1.);
 }

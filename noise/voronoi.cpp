@@ -39,8 +39,10 @@ void mainImage(out vec4 fragColor, in vec2 coord) {
     vec2 uv = coord.xy/iResolution.xy;
 
     float color = voronoiNoise(uv,10.);
+    
     color = smoothstep(.0,1.,color);
     color = 1. - color;
     // color = step(.9,color);
+    color = 1. - color;
     fragColor = vec4(vec3(color),1.);
 }

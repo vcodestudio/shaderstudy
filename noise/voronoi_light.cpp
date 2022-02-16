@@ -80,5 +80,6 @@ void mainImage(out vec4 fragColor, in vec2 coord) {
     circle = smoothstep(0.,.8,1. - circle);
     diff *= circle;
 
+    // float test = sign(.0);
     fragColor = vec4(vec3(diff),1.);
 }

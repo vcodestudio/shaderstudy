@@ -52,5 +52,7 @@ void mainImage(out vec4 fragColor, in vec2 coord) {
 	
 	diff = circle;
 
-    fragColor = vec4(vec3(diff),1.);
+	vec3 norm1 = normalize(vec3(-.5,0.,0.));
+	norm1.x += 2.;
+    fragColor = vec4(vec3(norm1),1.);
 }
