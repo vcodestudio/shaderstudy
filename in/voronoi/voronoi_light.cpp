@@ -61,7 +61,7 @@ void mainImage(out vec4 fragColor, in vec2 coord) {
     // color = 1. - color;
     // color = step(.9,color);
     cstep = fract(fract(.99 * (color - .1 * 0.5))*5.);//???????????
-    cstep = smoothstep(.0,.5,cstep);
+    cstep = smoothstep(.0,.8,cstep);
 
     vec2 normal = -vec2(dFdx(color),dFdy(color));
     vec3 normalmap = vec3(10.*normal + .5,1.);
@@ -79,6 +79,8 @@ void mainImage(out vec4 fragColor, in vec2 coord) {
     float circle = length(uv - vec2(.5)) - .0;
     circle = smoothstep(0.,.8,1. - circle);
     diff *= circle;
+
+    // diff = 1. - diff;
 
     fragColor = vec4(vec3(diff),1.);
 }
