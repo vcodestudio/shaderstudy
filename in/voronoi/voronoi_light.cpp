@@ -14,7 +14,7 @@ float voronoiNoise(vec2 pos, float div) {
 
     float diff = 1.;
     for(int y = -1;y<=1;y++) {
-        for(int x = -1;x<=1;x++) {
+        for(int x=-1;x<=1;x++) {
             //양옆위아래원점
             vec2 neighbor = vec2(float(x),float(y));
             //무작위로 배열된 포인트들의 이웃과 자신들 모두 선택. 0~1사이 값
@@ -61,7 +61,7 @@ void mainImage(out vec4 fragColor, in vec2 coord) {
     // color = 1. - color;
     // color = step(.9,color);
     cstep = fract(fract(.99 * (color - .1 * 0.5))*5.);//???????????
-    cstep = smoothstep(.0,.5,cstep);
+    cstep = smoothstep(.0,.8,cstep);
 
     vec2 normal = -vec2(dFdx(color),dFdy(color));
     vec3 normalmap = vec3(10.*normal + .5,1.);
@@ -80,6 +80,11 @@ void mainImage(out vec4 fragColor, in vec2 coord) {
     circle = smoothstep(0.,.8,1. - circle);
     diff *= circle;
 
+<<<<<<< HEAD:noise/voronoi_light.cpp
     // float test = sign(.0);
+=======
+    // diff = 1. - diff;
+
+>>>>>>> 195e02c1984aebefae02103792676ddfa16a3bd5:in/voronoi/voronoi_light.cpp
     fragColor = vec4(vec3(diff),1.);
 }
