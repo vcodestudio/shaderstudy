@@ -27,9 +27,11 @@ float voronoiNoise(vec2 pos, float div) {
             
             vec2 between = points + neighbor - f;
 
-            float d = length(between) * .5;
+            float d = length(between) * .1;
+            d = max(d,length(between) * .1);
             // d = smoothstep(.0,1.,d);
             diff = min(diff,d);
+            // diff *= d;
         }
     }
 
@@ -44,13 +46,14 @@ void mainImage(out vec4 fragColor, in vec2 coord) {
     float color = voronoiNoise(uv,10.);
     float cstep = 0.;
     // color *= color;
-    color = smoothstep(.0,1.,color);
+    color = smoothstep(.0,.5,color);
+    color = 1. - color;
 
     vec2 muv = iMouse.xy/iResolution.xy;
     muv.x *= iResolution.x/iResolution.y;
 
     float mouseP = length(uv - muv) - .1;
-    mouseP = smoothstep(.1,.3,mouseP);
+    mouseP = smoothstep(.0,.3,mouseP);
     mouseP = 1. - mouseP;
     // color = min(mouseP,color);
     color *= mouseP;
