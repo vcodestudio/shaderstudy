@@ -26,6 +26,7 @@ vec3 voronoiNoise(vec2 pos, float div) {
             vec2 uv = points + neighbor;
             vec3 pointcolor = texture(iChannel0,uv).rgb;
             vec2 between = points + neighbor - f;
+            
             float diff = length(between);
             color = mix(color,pointcolor,diff);
         }

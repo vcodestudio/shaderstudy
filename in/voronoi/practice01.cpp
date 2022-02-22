@@ -25,7 +25,7 @@ float voronoi(vec2 pos) {
 
             float val = rand(points);
 
-            points = .5 + .5*(sin(iTime + 3.14 * 2. * points));
+            points = .5 + .5*(sin(iMouse.xy/iResolution.xy + 3.14 * 2. * points));
 
 
             //이건 왜 사이값이될까
@@ -41,8 +41,13 @@ float voronoi(vec2 pos) {
 void mainImage(out vec4 fragColor, in vec2 coord) {
     vec2 uv = coord.xy / iResolution.xy;
     uv.x *= iResolution.x/iResolution.y;
+    
     float voronoi = voronoi(uv * 10.);
-    // voronoi -= step(.7,abs(sin(voronoi * 3.14 * 10.))*1.);
+    
+    voronoi += step(.99,1. - voronoi);
+    voronoi += step(.7,abs(sin(voronoi * 3.14 * 10.))*1.);
+
     vec3 color = vec3(voronoi);
+
     fragColor = vec4(color,1.);
 }
